@@ -1,2 +1,2 @@
-# eje
+#ejercicios basicos
 ejercicio
