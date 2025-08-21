@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>EmoSense AI - Análisis Emocional</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #181818;
+            color: #fffefe;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0px;
+        }
+        .header {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+        .description {
+            font-size: 1rem;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        .emoji-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .emoji-card {
+            font-size: 2rem;
+            background: #222;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .emoji-card:hover {
+            background: #ffd700;
+            color: #181818;
+        }
+        .main-app {
+            margin: 40px 0;
+            text-align: center;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        .url-input {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ffd700;
+            width: 70%;
+            margin-bottom: 10px;
+        }
+        .load-button {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            background: #ffd700;
+            color: #181818;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .iframe-container {
+            margin-top: 20px;
+            min-height: 300px;
+        }
+        .footer {
+            text-align: center;
+            color: #888;
+            margin: 40px 0 10px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">EmoSense AI</h1>
+            <p class="subtitle">Análisis Emocional de Nueva Generación</p>
+            <p class="description">
+                Descubre el poder de la inteligencia artificial para decodificar emociones humanas. Analiza expresiones faciales en tiempo real y obtén insights emocionales.
+            </p>
+            <div class="emoji-grid">
+                <div class="emoji-card">😊</div>
+                <div class="emoji-card">😢</div>
+                <div class="emoji-card">😠</div>
+                <div class="emoji-card">😨</div>
+                <div class="emoji-card">😮</div>
+                <div class="emoji-card">😐</div>
+            </div>
+        </header>
+
+        <section class="main-app">
+            <h2>Laboratorio de Emociones</h2>
+            <p>Conecta tu aplicación Gradio para activar el análisis emocional inteligente.</p>
+            <div class="input-group">
+                <input 
+                    type="url" 
+                    class="url-input" 
+                    id="gradioUrl" 
+                    placeholder="https://9991752ca8e51f25bf.gradio.live"
+                    value="https://9991752ca8e51f25bf.gradio.live"
+                >
+                <button class="load-button" onclick="loadGradioApp()">Activar Detector IA</button>
+            </div>
+            <div class="iframe-container" id="appContainer"></div>
+        </section>
+
+        <footer class="footer">
+            EmoSense AI © 2025 • Tecnología de Análisis Emocional
+        </footer>
+    </div>
+    <script>
+        function loadGradioApp() {
+            const url = document.getElementById('gradioUrl').value.trim();
+            const container = document.getElementById('appContainer');
+            if (!url) {
+                alert('Por favor, ingresa una URL válida');
+                return;
+            }
+            container.innerHTML = `
+                <iframe 
+                    src="${url}" 
+                    style="width:100%;height:300px;border:none;border-radius:10px;"
+                    allow="camera; microphone"
+                ></iframe>
+            `;
+        }
+        // Emoji click simple feedback
+        document.querySelectorAll('.emoji-card').forEach(emoji => {
+            emoji.addEventListener('click', function() {
+                emoji.style.background = '#ffd700';
+                emoji.style.color = '#181818';
+                setTimeout(() => {
+                    emoji.style.background = '#222';
+                    emoji.style.color = '#fff';
+                }, 300);
+            });
+        });
+    </script>
